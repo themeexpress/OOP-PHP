@@ -7,13 +7,13 @@ class Bill{
 
     //Assign constructor which will be run very fast in object create
 
-    function __construct()
+    public function __construct()
     {
-        $this->bill=10;
+        $this->bill=100;
     }
 
     public function dinner($person){
-        $this->bill=+$this->dinner*$person;
+        $this->bill+=$this->dinner*$person;
         return $this;
 
     }
@@ -21,11 +21,16 @@ class Bill{
         $this->bill+=$this->drinks*$person;
         return $this;
     }
+    public function __destruct()
+    {
+    echo $this->bill;
+    }
 }
+
 //Create Bill objects
 
 $bill = new Bill();
-echo $bill->dinner(5)->drinks(2)->bill;
+$bill->dinner(5)->drinks(2)->bill;
 
 
 ?>
